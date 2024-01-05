@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GridMove : IGridMove
+public class GridMove : IMove
 {
     private Transform player;
     private Transform[] grids;
@@ -23,15 +23,24 @@ public class GridMove : IGridMove
             Vector3Int size = grids[2].GetComponentInChildren<Tilemap>().size;
             int width = size.x;
             int height = size.y;
-            grids[grids.Length - 1].position = new Vector3(grids[0].position.x + width, grids[grids.Length - 1].position.y, grids[grids.Length - 1].position.z);
+            grids[0].position = new Vector3(grids[grids.Length - 1].position.x + width, grids[0].position.y, grids[0].position.z);
             Transform temp = grids[0];
-            for (int i = 0; i < grids.Length - 1; i++)
-            {
-                grids[i] = grids[i + 1];
-            }
-            //grids[0] = grids[1];
-            //grids[1] = grids[2];
-            grids[grids.Length - 1] = temp;
+            //for (int i = grids.Length-2; i >0; i++)
+            //{
+            //    grids[i] = grids[i -1];
+            //}
+            
+
+            grids[0] = grids[1];
+
+            grids[1] = grids[2];
+
+            // Gán giá trị lưu trữ từ temp vào grids[2]
+            //grids[2] = temp;
+            //grids[2] = grids[1];
+            //grids[1] = grids[0];
+            
+            grids[2] = temp;
         }
     }
 }

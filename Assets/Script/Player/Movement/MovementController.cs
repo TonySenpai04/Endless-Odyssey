@@ -18,6 +18,6 @@ public class MovementController : MonoBehaviour
     }
     public void ToggleAcceleration()
     {
-       move.ToggleAcceleration();
+       
     }
 }

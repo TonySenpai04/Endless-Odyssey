@@ -9,7 +9,7 @@ public class GridController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] public Transform[] grids;
     [SerializeField] private float targetDistance;
-    private IGridMove gridMove;
+    private IMove gridMove;
 
     void Start()
     {

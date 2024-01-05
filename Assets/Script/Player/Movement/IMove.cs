@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IMove 
 {
     void Move();
-    void ToggleAcceleration();
+    
 }
