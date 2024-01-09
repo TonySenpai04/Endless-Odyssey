@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour
+public class MovementController : MovementControllerBase
 {
-    private IMove move;
-    [SerializeField] private float speed;
-    [SerializeField] private Rigidbody2D rigidbody;
-    private void Start()
+
+    protected override void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        base.Start();
         move = new Move(rigidbody, speed);
     }
     private void Update()
     {
         move.Move();
     }
-    public void ToggleAcceleration()
+    public void StopMove()
     {
-       
+        IStopMove stopMove=(IStopMove) move;
+        stopMove.StopMove();
     }
 }

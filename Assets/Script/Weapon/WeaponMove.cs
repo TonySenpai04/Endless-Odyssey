@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMove : MonoBehaviour
+public class WeaponMove : IMove
 {
-    [SerializeField]private float moveSpeed = 5f;
-   
-
-    private void Update()
+    [SerializeField] private float moveSpeed ;
+    [SerializeField] private GameObject weaponPrefab;
+    public WeaponMove(float moveSpeed, GameObject weaponPrefab)
     {
-        Move();
+        this.moveSpeed = moveSpeed;
+        this.weaponPrefab = weaponPrefab;
     }
 
-    private void Move()
+    void IMove.Move()
     {
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-
+        weaponPrefab.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
     }
-   
 }

@@ -50,6 +50,8 @@ public class Shooting : IShooting
                 return bulletPool[currentBulletIndex];
             }
         }
-        return null;
+        GameObject bullet = Object.Instantiate(weaponPrefab, Vector3.zero, Quaternion.identity);
+        bulletPool.Add(bullet);
+        return  bullet ; 
     }
 }

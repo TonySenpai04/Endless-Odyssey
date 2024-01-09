@@ -3,39 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : IMove
+public class Move : IMove, IStopMove
 {
     private Rigidbody2D rigidbody;
-    private bool isAccelerating = false;
-    private float originalSpeed = 0f;
+    private bool isMove = true;
+    private float originalSpeed;
     private float speed;
+
     public Move(Rigidbody2D rigidbody, float speed)
     {
         this.rigidbody = rigidbody;
         this.speed = speed;
         originalSpeed = speed;
+
     }
 
-    public void Run()
-    {
-        if (isAccelerating)
-        {
-            speed += 100;
-        }
-        else
-        {
-            speed = originalSpeed;
-        }
-    }
+    
 
     void IMove.Move()
     {
-       rigidbody.velocity= new Vector3(speed*Time.deltaTime*1,rigidbody.velocity.y,0);
+        if (isMove)
+        {
+            rigidbody.velocity = new Vector3(speed * Time.deltaTime * 1, rigidbody.velocity.y, 0);
+        }
     }
-    public void ToggleAcceleration()
+    
+    public void StopMove()
     {
-        isAccelerating = !isAccelerating;
-        Run();
-        Debug.Log(speed);
+        isMove = !isMove;
     }
 }

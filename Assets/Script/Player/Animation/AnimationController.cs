@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
+public class AnimationController : AnimationControllerBase
 {
-    public Animator animator;
-    void Start()
+   
+    protected override void  Start()
     {
-        animator=GetComponent<Animator>();
+        base.Start();
     }
 
     void Update()
